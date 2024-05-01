@@ -1,18 +1,9 @@
 import 'package:assessment1/models/brands_model.dart';
 import 'package:assessment1/models/category_model.dart';
 import 'package:assessment1/models/product_model.dart';
-import 'package:assessment1/provider.dart';
+import 'package:assessment1/view_model/provider.dart';
 import 'package:assessment1/services/get_category.dart';
 import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
-import 'package:assessment1/models/brands_model.dart';
-import 'package:assessment1/models/category_model.dart';
-import 'package:assessment1/models/product_model.dart';
-import 'package:assessment1/provider.dart';
-import 'package:assessment1/services/get_category.dart';
-import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
 class DropdownWidget extends StatelessWidget {
@@ -27,7 +18,7 @@ class DropdownWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Container(
-        width: screenWidth * 0.85,
+        width: screenWidth * 0.88,
         height: 185,
         decoration: BoxDecoration(
           border: Border.all(
@@ -42,10 +33,10 @@ class DropdownWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width * 0.85,
+                width: MediaQuery.of(context).size.width * 0.87,
                 color: Colors.grey[200],
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
@@ -56,7 +47,7 @@ class DropdownWidget extends StatelessWidget {
                             ? "Selected Category:"
                             : 'Selected Category: ${homeProvider.selectedCategory?.catgName}',
                         style: const TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 13,
                         ),
                       ),
                     ),
@@ -95,38 +86,40 @@ class DropdownWidget extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Container(
-                width: screenWidth * 0.85,
+                width: screenWidth * 0.87,
                 color: Colors.grey[200],
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
-                      child: Text(
-                        homeProvider.selectedCategory?.catgName == null
-                            ? 'Select Product:'
-                            : 'Select Product: ${homeProvider.selectedProduct?.name}',
-                        style: const TextStyle(
-                          fontSize: 16.0,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 10),
+                        child: Text(
+                          homeProvider.selectedCategory?.catgName == null
+                              ? 'Select Product:'
+                              : 'Select Product: ${homeProvider.selectedProduct?.name}',
+                          style: const TextStyle(
+                            fontSize: 13,
+                          ),
                         ),
                       ),
-                    ),
-                    DropdownButton<ProductModel>(
-                      onChanged: (ProductModel? newValue) {
-                        context.read<HomeProvider>().updateProduct(newValue);
-                      },
-                      items: homeProvider.products
-                          .map<DropdownMenuItem<ProductModel>>(
-                              (ProductModel? value) {
-                        return DropdownMenuItem<ProductModel>(
-                          value: value,
-                          child: Text(value!.name!),
-                        );
-                      }).toList(),
-                    ),
-                  ],
+                      DropdownButton<ProductModel>(
+                        onChanged: (ProductModel? newValue) {
+                          context.read<HomeProvider>().updateProduct(newValue);
+                        },
+                        items: homeProvider.products
+                            .map<DropdownMenuItem<ProductModel>>(
+                                (ProductModel? value) {
+                          return DropdownMenuItem<ProductModel>(
+                            value: value,
+                            child: Text(value!.name!),
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 10),
@@ -145,7 +138,7 @@ class DropdownWidget extends StatelessWidget {
                             ? 'Select Brand:'
                             : 'Select Brand: ${homeProvider.selectedBrand?.brand}',
                         style: const TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 13,
                         ),
                       ),
                     ),
