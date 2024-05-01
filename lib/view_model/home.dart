@@ -1,12 +1,10 @@
-import 'package:assessment1/provider.dart';
+import 'package:assessment1/view_model/provider.dart';
 import 'package:assessment1/widgets/dropdownwidget.dart';
 import 'package:assessment1/widgets/navigation_widget.dart';
 import 'package:assessment1/widgets/textfieldwidget.dart';
 import 'package:assessment1/widgets/trianglewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
