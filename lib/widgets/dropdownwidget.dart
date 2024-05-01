@@ -7,16 +7,25 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DropdownWidget extends StatelessWidget {
+  final Key? widgetKey;
+  final int dropdownIndex;
+  final List<CategoryModel> categories;
+
   const DropdownWidget({
-    super.key,
-  });
+    required this.dropdownIndex,
+    required this.categories,
+    this.widgetKey,
+    Key? key, 
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final homeProvider = context.watch<HomeProvider>();
+    final selectedCategory = homeProvider.selectedCategory;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
+      key: widgetKey,
       child: Container(
         width: screenWidth * 0.88,
         height: 185,

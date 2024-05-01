@@ -5,6 +5,7 @@ import 'package:assessment1/widgets/textfieldwidget.dart';
 import 'package:assessment1/widgets/trianglewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -72,7 +73,10 @@ class HomeScreen extends StatelessWidget {
                                     i < dropdownState.dropdownVisibility.length;
                                     i++)
                                   if (dropdownState.dropdownVisibility[i])
-                                    const DropdownWidget(),
+                                    DropdownWidget(
+                                      dropdownIndex: i,
+                                      categories: [],
+                                    ),
                                 SizedBox(
                                   height: 15,
                                 ),
@@ -146,8 +150,17 @@ class HomeScreen extends StatelessWidget {
                                                   icon: const Icon(Icons.delete,
                                                       size: 25),
                                                   onPressed: () {
-                                                    dropdownState
-                                                        .removeDropdown();
+                                                    final dropdownIndex =
+                                                        dropdownState
+                                                            .dropdownVisibility
+                                                            .indexWhere(
+                                                                (element) =>
+                                                                    element);
+                                                    if (dropdownIndex != -1) {
+                                                      dropdownState
+                                                          .removeDropdown(
+                                                              dropdownIndex);
+                                                    }
                                                   },
                                                 ),
                                                 const Text(
