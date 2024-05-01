@@ -1,5 +1,6 @@
 import 'package:assessment1/provider.dart';
 import 'package:assessment1/widgets/dropdownwidget.dart';
+import 'package:assessment1/widgets/navigation_widget.dart';
 import 'package:assessment1/widgets/textfieldwidget.dart';
 import 'package:assessment1/widgets/trianglewidget.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +73,6 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  // color: Colors.amber,
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(
                                     color: Colors.red,
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                                   width: 130,
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 15),
+                                        const EdgeInsets.symmetric(horizontal: 15),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                                             dropdownState.addDropdown();
                                           },
                                         ),
-                                        Text(
+                                        const Text(
                                           "Add",
                                           style: TextStyle(fontSize: 18),
                                         ),
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               if (dropdownState.dropdownVisibility.isNotEmpty)
                                 Container(
                                   height: 50,
@@ -119,18 +119,18 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 5),
+                                        const EdgeInsets.symmetric(horizontal: 5),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         IconButton(
-                                          icon: Icon(Icons.delete, size: 25),
+                                          icon: const Icon(Icons.delete, size: 25),
                                           onPressed: () {
                                             dropdownState.removeDropdown();
                                           },
                                         ),
-                                        Text(
+                                        const Text(
                                           "Remove",
                                           style: TextStyle(fontSize: 18),
                                         ),
@@ -152,8 +152,28 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
               ),
+              const SizedBox(height: 15),
+              const TextFieldWithLabel(
+                hintText: 'Occupation',
+              ),
+              const SizedBox(height: 15),
+              const TextFieldWithLabel(
+                hintText: 'Requirement',
+              ),
+              const SizedBox(height: 15),
+              const TextFieldWithLabel(
+                hintText: 'Customer budget',
+              ),
+              const SizedBox(height: 15),
+              const TextFieldWithLabel(
+                hintText: 'Remarks',
+              ),
             ],
           ),
+        ),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          selectedIndex: 0,
+          onItemTapped: (index) {},
         ),
       ),
     );
